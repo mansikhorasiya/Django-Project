@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from cubetech import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("about-us/",views.aboutUs),
+    path("course/",views.Course),
+    path("course/<str:courseid>",views.courseDetails),
+    path("",views.homePage),
+
 ]
