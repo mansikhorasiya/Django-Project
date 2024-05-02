@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Home page</title>
+    <title>{{title}}</title>
     <style>
       .main {
         width: 200px;
@@ -12,6 +12,21 @@
     </style>
   </head>
   <body>
-    <div class=".main">Welcome to cubetech | Jodhpur</div>
+    {% for n in clist %}
+    <div>{{forloop.counter}}{{n}}</div>
+    {% endfor %}
+    <br />
+    <table border="1" cellpadding="10">
+      <tr>
+        <th>Name</th>
+        <th>Phone number</th>
+      </tr>
+      {% for d in StudentDetails %}
+      <tr>
+        <td>{{d.name}}</td>
+        <td>{{d.phone}}</td>
+      </tr>
+      {% endfor %}
+    </table>
   </body>
 </html>
