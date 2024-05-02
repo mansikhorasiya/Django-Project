@@ -40,6 +40,7 @@
       <!-- Start Header Area -->
       <header class="default-header">
         <nav class="navbar navbar-expand-lg navbar-light">
+          {% include 'header.html' %} {% comment %}
           <div class="container">
             <a class="navbar-brand" href="index.html">
               <img src="/static/img/logo.png" alt="" />
@@ -87,6 +88,7 @@
           </div>
         </nav>
       </header>
+      {% endcomment %}
       <!-- End Header Area -->
     </section>
 
@@ -584,6 +586,7 @@
     <!-- end contact Area -->
 
     <!-- start footer Area -->
+    {% comment %}
     <footer class="footer-area section-gap">
       <div class="container">
         <div class="row">
@@ -667,6 +670,7 @@
       </div>
     </footer>
     <!-- End footer Area -->
+    {% endcomment %} {% include 'footer.html' %}
 
     <script src="/static/js/vendor/jquery-2.2.4.min.js"></script>
     <script
