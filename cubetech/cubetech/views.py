@@ -33,13 +33,21 @@ def courseDetails(request,courseid):
 
 def userform(request):
     finaleans=0
+    data={}
     try:
+        if request.method=="POST":
         # n1=int(request.GET['num1'])
         # n2=int(request.GET['num2'])
-        n1=int(request.GET.get('num1'))
-        n2=int(request.GET.get('num2'))
-        # print(n1+n2)
-        finaleans=n1+n2
+            n1=int(request.GET.get('num1'))
+            n2=int(request.GET.get('num2'))
+            # print(n1+n2)
+            finaleans=n1+n2
+            data={
+                 'n1':n1,
+                 'n2':n2,
+                 'output':finaleans
+
+            }
 
     except:
       pass
