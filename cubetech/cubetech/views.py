@@ -15,14 +15,33 @@ def homePage(request):
 
         return render(request,"index.html")
 
-def aboutUs(request):
-    return HttpResponse("Welcome to Cubetech..")
+def about(request):
+    return render(request,"index.html")
 
 def generic(request):
-      return render(request,'generic.html')
+      return render(request,"generic.html")
+
+def element(request):
+     
+     return render(request,"elements.html")
 
 def Course(request):
     return HttpResponse("Welcome to Cubetech111..")
 
 def courseDetails(request,courseid):
     return HttpResponse(courseid)
+
+def userform(request):
+    finaleans=0
+    try:
+        # n1=int(request.GET['num1'])
+        # n2=int(request.GET['num2'])
+        n1=int(request.GET.get('num1'))
+        n2=int(request.GET.get('num2'))
+        # print(n1+n2)
+        finaleans=n1+n2
+
+    except:
+      pass
+
+    return render(request,"userform.html",{'output':finaleans})

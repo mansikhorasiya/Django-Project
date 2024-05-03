@@ -19,10 +19,11 @@ from cubetech import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("about-us/",views.aboutUs),
+    path("about/",views.about),
     path("generic/",views.generic),
+    path("element/",views.element),
     path("course/",views.Course),
     path("course/<str:courseid>",views.courseDetails),
     path("",views.homePage),
-
+    path("userform/",views.userform),
 ]
