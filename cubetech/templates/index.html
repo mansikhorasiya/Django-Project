@@ -313,18 +313,17 @@
           </div>
         </div>
         <div class="row">
+          {% for n in servicesData %}
           <div class="col-lg-4 col-md-6">
             <div class="single-feature mb-30">
               <div class="title d-flex flex-row pb-20">
-                <span class="lnr lnr-user"></span>
-                <h4><a href="#">Expert Technicians</a></h4>
+                <span class="{{n.service_icon}}"></span>
+                <h4><a href="#">{{n.service_title}}</a></h4>
               </div>
-              <p>
-                Usage of the Internet is becoming more common due to rapid
-                advancement of technology and power.
-              </p>
+              <p>{{n.service_des}}</p>
             </div>
           </div>
+          {% endfor %} {% comment %}
           <div class="col-lg-4 col-md-6">
             <div class="single-feature mb-30">
               <div class="title d-flex flex-row pb-20">
@@ -374,6 +373,7 @@
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
+            {% endcomment %}
             <div class="single-feature">
               <div class="title d-flex flex-row pb-20">
                 <span class="lnr lnr-bubble"></span>

@@ -2,20 +2,17 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .form import UsersForm
+from service.models import service
 
 def homePage(request):
-        # data={
-        #      'title':'Home new',
-        #      'bdata':'Welcome to cubetech || Jodhpur',
-        #      'clist':['python' , 'java' , 'php'],
-        #      'number':[10,20,30,40,50],
-        #      'StudentDetails':[
-        #           {'name':'Testing1','phone':9876547895},
-        #           {'name':'Testing2','phone':9888765478}
-        #      ]
-        # }
-
-        return render(request,"index.html")
+        servicesData =service.objects.all()
+     #    for a in servicesData:
+     #         print(a.service_title)
+     #    print(service)
+        data={
+             'servicesData':servicesData
+        }
+        return render(request,"index.html",data)
 
 def about(request):
     return render(request,"index.html")
