@@ -29,6 +29,9 @@ def element(request):
 def saveevenood(request):
      c=''
      if request.method=='POST':
+          if request.POST.get('num1')=='':
+               return render(request,"evenodd.html",{'error':True})
+
           n=int(request.POST.get('num1'))
           if n%2==0:
                c='Even Number'
