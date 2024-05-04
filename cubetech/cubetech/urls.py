@@ -21,9 +21,12 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("about/",views.about),
     path("generic/",views.generic),
+    path("submitform/",views.submitform,name="submitform"),
     path("element/",views.element),
     path("course/",views.Course),
     path("course/<str:courseid>",views.courseDetails),
     path("",views.homePage),
     path("userform/",views.userform),
+    path("calculator/",views.calculator),
+    path("saveevenood/",views.saveevenood),
 ]

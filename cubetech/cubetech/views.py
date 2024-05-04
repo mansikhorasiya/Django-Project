@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from .form import UsersForm
 
 def homePage(request):
         # data={
@@ -22,8 +24,37 @@ def generic(request):
       return render(request,"generic.html")
 
 def element(request):
-     
      return render(request,"elements.html")
+
+def saveevenood(request):
+     c=''
+     if request.method=='POST':
+          n=int(request.POST.get('num1'))
+          if n%2==0:
+               c='Even Number'
+          else:
+               c='Odd Number'
+     return render(request,"evenodd.html",{'c':c})
+
+def calculator(request):
+     c=''
+     try:
+          if request.method=="POST":
+               n1=eval(request.POST.get("num1"))
+               n2=eval(request.POST.get("num2"))
+               opr=request.POST.get("opr")
+               if opr=='+':
+                    c=n1+n2;
+               elif opr=='-':
+                    c=n1-n2
+               elif opr=='*':
+                    c=n1*n2
+               elif opr=='/':
+                    c=n1/n2
+     except :
+        print(c)
+     return render(request,"calculator.html",{'c':c})
+
 
 def Course(request):
     return HttpResponse("Welcome to Cubetech111..")
@@ -31,9 +62,13 @@ def Course(request):
 def courseDetails(request,courseid):
     return HttpResponse(courseid)
 
+def submitform(request):
+      return HttpResponse(request)
+
 def userform(request):
     finaleans=0
-    data={}
+    fn=UsersForm
+    data={'form':fn}
     try:
         if request.method=="POST":
         # n1=int(request.GET['num1'])
@@ -43,13 +78,20 @@ def userform(request):
             # print(n1+n2)
             finaleans=n1+n2
             data={
-                 'n1':n1,
-                 'n2':n2,
+                 'form':fn,
+                #  'n1':n1,
+                #  'n2':n2,
                  'output':finaleans
 
             }
+
+            return HttpResponseRedirect('/about/')
 
     except:
       pass
 
     return render(request,"userform.html",{'output':finaleans})
+    
+
+
+

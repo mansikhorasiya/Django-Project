@@ -1,0 +1,46 @@
+<section class="contact-area section-gap" id="contact">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="menu-content pb-60 col-lg-8">
+        <div class="title text-center">
+          <h1 class="mb-10">Calculator</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <form method="post">
+          {% csrf_token %}
+
+          <lable>Value1</lable>
+          <input
+            type="text"
+            value="{{num1}}"
+            name="num1"
+            class="form-control"
+          /><br /><br />
+          <lable>Select OPR....</lable>
+          <select name="opr" class="form-control">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option></select
+          ><br /><br />
+
+          <lable>Value2</lable>
+          <input
+            type="text"
+            value="{{num2}}"
+            name="num2"
+            class="form-control"
+          /><br /><br />
+
+          <button type="submit">Calculator</button><br /><br />
+
+          <lable>Output:</lable>
+          <input type="text" value="{{c}}" class="form-control" />
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
