@@ -29,4 +29,5 @@ urlpatterns = [
     path("userform/",views.userform),
     path("calculator/",views.calculator),
     path("saveevenood/",views.saveevenood),
+    path("marksheet/",views.marksheet),
 ]

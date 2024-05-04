@@ -1,0 +1,52 @@
+<section class="contact-area section-gap" id="contact">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="menu-content pb-60 col-lg-8">
+        <div class="title text-center">
+          <h1 class="mb-10" align="center ">Marksheet</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <form method="post" align="center">
+          {% csrf_token %}
+
+          <lable>Subject1</lable>
+          <input type="text" name="subject1" class="form-control" /><br /><br />
+
+          <lable>Subject2</lable>
+          <input type="text" name="subject2" class="form-control" /><br /><br />
+
+          <lable>Subject3</lable>
+          <input type="text" name="subject3" class="form-control" /><br /><br />
+
+          <lable>Subject4</lable>
+          <input type="text" name="subject4" class="form-control" /><br /><br />
+
+          <lable>Subject5</lable>
+          <input type="text" name="subject5" class="form-control" /><br /><br />
+
+          <button type="submit">Marksheet</button><br /><br />
+
+          <lable>Totle:</lable>
+          <input
+            type="text"
+            value="{{totle}}"
+            class="form-control"
+          /><br /><br />
+
+          <lable>Persantages:</lable>
+          <input
+            type="text"
+            value="{{persantages}}"
+            class="form-control"
+          /><br /><br />
+
+          <lable>Division:</lable>
+          <input type="text" value="{{divsion}}" class="form-control" />
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

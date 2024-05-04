@@ -34,7 +34,35 @@ def saveevenood(request):
                c='Even Number'
           else:
                c='Odd Number'
+
      return render(request,"evenodd.html",{'c':c})
+
+def marksheet(request):
+    if request.method=="POST":
+        s1=int(request.POST.get('subject1'))
+        s2=int(request.POST.get('subject2'))
+        s3=int(request.POST.get('subject3'))
+        s4=int(request.POST.get('subject4'))
+        s5=int(request.POST.get('subject5'))
+        t=s1+s2+s3+s4+s5
+        p=t*100/500;
+        if p>=60:
+             d='First div'
+        elif p>=48:
+             d='Second div'
+        elif p>=35:
+             d='Third div'
+        else:
+             d='fail'
+        data={
+             'totle':t,
+             'persantages':p,
+             'divsion':d
+        } 
+        print(t) 
+        return render(request,"marksheet.html",data)
+    return render(request,"marksheet.html")
+
 
 def calculator(request):
      c=''
