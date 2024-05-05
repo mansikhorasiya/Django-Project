@@ -5,7 +5,7 @@ from .form import UsersForm
 from service.models import service
 
 def homePage(request):
-        servicesData =service.objects.all()
+        servicesData =service.objects.all().order_by('service_title')[:6]
      #    for a in servicesData:
      #         print(a.service_title)
      #    print(service)
