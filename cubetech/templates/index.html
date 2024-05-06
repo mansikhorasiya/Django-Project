@@ -91,6 +91,10 @@
       {% endcomment %}
       <!-- End Header Area -->
     </section>
+    <marquee>
+      {% for news in newsData %}
+      <a href=""> {{news.news_title}} </a> &nbsp;&nbsp;&nbsp; {% endfor %}
+    </marquee>
 
     <section class="default-banner active-blog-slider">
       <div

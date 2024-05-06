@@ -6,4 +6,5 @@ class NewsAdmin(admin.ModelAdmin):
 
 admin.site.register(News,NewsAdmin)
 
+
 # Register your models here.

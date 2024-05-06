@@ -3,14 +3,17 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .form import UsersForm
 from service.models import service
+from news.models import News
 
 def homePage(request):
+        newsData=News.objects.all();
         servicesData =service.objects.all().order_by('service_title')[:6]
      #    for a in servicesData:
      #         print(a.service_title)
      #    print(service)
         data={
-             'servicesData':servicesData
+             'servicesData':servicesData,
+             'newsData':newsData
         }
         return render(request,"index.html",data)
 
