@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-*yt-zn%bcg@2i1^jrzgd8869-64suruod_2#p4c_7c*+s2&%f0"
+SECRET_KEY = "django-insecure-#u-zh7oiwf8r03npdyf65#s*y3&46_yr@586vk$_znw)dyqvy("
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'chatapp',
+    'ChatApp',
     'channels',
 ]
 
@@ -57,7 +57,7 @@ ROOT_URLCONF = "chatprj.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ['template'],
+        "DIRS": ['templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
