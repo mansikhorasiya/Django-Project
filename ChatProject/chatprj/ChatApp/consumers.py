@@ -15,24 +15,24 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def disconnect(self,close_code):
         await self.channels_layer.group_add(self.room_name,self.channel_name)
 
-    # async def receive(self,text_data):
-    #     text_data_json = json.loads(text_data)
-    #     message = text_data_json
+    async def receive(self,text_data):
+        text_data_json = json.loads(text_data)
+        message = text_data_json
 
     #     print(message)
 
-    # async def send_message(self, event):
-    #     data =event['message']
-    #     await self.create_message(data=data)
-    #     respons_data={
-    #         'sender':data['sender'],
-    #         'message':data['message']
-    #     }
-    #     await self.send(text_data=json.dumps({'message': respons_data}))
+    async def send_message(self, event):
+        data =event['message']
+        await self.create_message(data=data)
+        respons_data={
+            'sender':data['sender'],
+            'message':data['message']
+        }
+        await self.send(text_data=json.dumps({'message': respons_data}))
 
-    # @database_sync_to_async
-    # def create_message(self,data):
-    #     get_room_by_name=Room.objects.get(room_name=data['room_name'])
-    #     if not Message.objects.filter(message=data['message']).exists():
-    #         new_message=Message(room=get_room_by_name,sender=data['sender'],message=data['message'])
-    #         new_message.save()
+    @database_sync_to_async
+    def create_message(self,data):
+        get_room_by_name=Room.objects.get(room_name=data['room_name'])
+        if not Message.objects.filter(message=data['message']).exists():
+            new_message=Message(room=get_room_by_name,sender=data['sender'],message=data['message'])
+            new_message.save()
