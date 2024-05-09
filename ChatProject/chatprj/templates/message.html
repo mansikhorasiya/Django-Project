@@ -62,60 +62,38 @@
     </div>
   </body>
   <script>
-      function scrollToBottom() {
-        var chatContainer = document.getElementById("chatContainer");
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-      }
-      const websocketProtocol =
-        window.location.protocol === "https:" ? "wss" : "ws";
-      const wsEndpoint = `${websocketProtocol}://${window.location.host}/ws/notification/{{room_name}}/`;
-      const socket = new WebSocket(wsEndpoint);
+    function scrollToBottom() {
+      var chatContainer = document.getElementById("chatContainer");
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+    const websocketProtocol =
+      window.location.protocol === "https:" ? "wss" : "ws";
+    const wsEndpoint = `${websocketProtocol}://${window.location.host}/ws/notification/{{room_name}}/`;
+    const socket = new WebSocket(wsEndpoint);
 
-      // Form submit listner
-      document
-        .getElementById("message-form")
-        .addEventListener("submit", function (event) {
-          event.preventDefault();
-          const message = document.getElementById("msg").value;
-          socket.send(
-            JSON.stringify({
-              message: message,
-              room_name: "{{room_name}}",
-              sender: "{{user}}",
-            })
-          );
-        });
-         // response from consumer on server
-      socket.addEventListener("message", (event) => {
-        const messageData = JSON.parse(event.data)['message'];
-        console.log(messageData);
-
-        var sender = messageData['sender'];
-        var message = messageData['message'];
-
-        // empty message input field after message has been sent
-        if (sender == {{user}}){
-            document.getElementById('msg').value = '';
-        }
-
-        // Here's where we append the message to the chatbox.
-        var messageDiv = document.querySelector('.message');
-        if (sender != '{{user}}') { // assuming you have a variable `currentUser` to hold the current user's name
-            messageDiv.innerHTML += '<div class="receive"><p style="color: #000;">' + message + '<strong>-' + sender + '</strong></p></div>';
-        } else {
-            messageDiv.innerHTML += '<div class="send"><p style="color: #000;">' + message + '</p></div>';
-        }
-        scrollToBottom();
-
-    });
-
+    //Successfull  connection event
     socket.onopen = (event) => {
-        console.log("WebSocket connection opened!");
+      console.log("WebSocket connection opened!");
     };
 
+    //Successfull  connection event
     socket.onclose = (event) => {
-        console.log("WebSocket connection closed!");
+      console.log("WebSocket connection closed!");
     };
+    //Form submit listner
+    document
+      .getElementById("message-form")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+        const message = document.getElementById("msg").value;
+        socket.send(
+          JSON.stringify({
+            message: message,
+            room_name: "{{room_name}}",
+            sender: "{{user}}",
+          })
+        );
+      });
   </script>
   <style>
     * {
