@@ -13,13 +13,19 @@ class ChatConsumer(AsyncWebsocketConsumer):
         print('connected')
 
     async def disconnect(self,close_code):
-        await self.channels_layer.group_add(self.room_name,self.channel_name)
+        await self.channel_layer.group_add(self.room_name,self.channel_name)
 
     async def receive(self,text_data):
         text_data_json = json.loads(text_data)
         message = text_data_json
 
-    #     print(message)
+        # print(message)
+
+        event= {
+            'type':'send_message',
+            'message': message,
+        }
+        await self.channel_layer.group_send(self.room_name, event)
 
     async def send_message(self, event):
         data =event['message']
